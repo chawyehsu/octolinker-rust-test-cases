@@ -18,6 +18,7 @@ use ::std::{
     },
     fs::remove_dir as empty_dir
 };
+use libc::*;
 use core::primitive::u8;
 use std;
 use std::str::from_utf8 as _my_from_utf8;
@@ -52,12 +53,32 @@ use {
         },
     }
 };
+use octolinker_rust_test_cases::Error;
+pub use core::hash::BuildHasher;
+pub use std::io::ErrorKind;
 pub use once_cell;
 pub use near_sdk::{
     env, ext_contract, near_bindgen, AccountId,
     Balance, Promise, PromiseResult, PublicKey,
 };
 
+mod inner {
+    pub fn hello() {
+        use super::ErrorKind;
+        let ek = ErrorKind::NotFound;
+        println!("{:?}", ek);
+    }
+}
+
 fn main() {
+    use self::inner;
     println!("Hello, world!");
+    inner::hello();
+}
+
+#[test]
+fn test_my_test() {
+    use octolinker_rust_test_cases::Error;
+    use crate::inner::hello;
+    hello();
 }
