@@ -33,6 +33,9 @@ use std::{
     }
 };
 use lazy_static::lazy;
+use minimad::{
+    TextTemplate, TextTemplateExpander
+};
 use {
     async_std::fs::File,
     clap::{
