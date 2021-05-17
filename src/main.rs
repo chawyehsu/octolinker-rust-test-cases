@@ -24,7 +24,7 @@ use lazy_static::lazy;                               // @should link to https://
 use ::mailparse::MailHeader as AMailHeader;          // @should link to https://docs.rs/mailparse
 use env_logger::Logger as BLogger;                   // @should link to https://docs.rs/env_logger
 // use_path_self_super: https://github.com/rust-analyzer/rust-analyzer/blob/1f1a1ce4f5/crates/syntax/test_data/parser/ok/0013_use_path_self_super.rs
-use self::foo::foo_fn;                               // @should link to <CURRENT_PATH>
+use self::foo::foo_fn;                               // @should link to <CURRENT_PATH>?
 mod middle {
     mod inner {
         use super::super::foo_fn;                    // @should link to <???>
@@ -118,7 +118,7 @@ mod inner {
 }
 
 fn main() {
-    use self::inner;                                // @should link to <CURRENT_PATH>
+    use self::inner;                                // @should link to <CURRENT_PATH>?
     println!("Hello, world!");
     inner::hello();
 }
