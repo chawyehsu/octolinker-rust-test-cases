@@ -1,6 +1,8 @@
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
+// RFC: should it link to the crate's doc page or repo url?
+
 // Rust 2015, https://doc.rust-lang.org/reference/items/extern-crates.html
 extern crate bytes;                                  // @should link to https://docs.rs/bytes
 extern crate bytes as my_bytes;                      // @should link to https://docs.rs/bytes
